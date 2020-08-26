@@ -89,11 +89,11 @@ def resample(image, scan, new_spacing=[1,1,1]):
 pix_resampled, spacing = resample(first_patient_pixels, first_patient, [1,1,1])
 print("Shape before resampling\t", first_patient_pixels.shape)
 print("Shape after resampling\t", pix_resampled.shape)
-
+#   3D plotting
 def plot_3d(image, threshold=-300):
     
-    # Position the scan upright, 
-    # so the head of the patient would be at the top facing the camera
+     
+    
     p = image.transpose(2,1,0)
     
     verts, faces = measure.marching_cubes_lewiner(p, threshold)
@@ -101,7 +101,7 @@ def plot_3d(image, threshold=-300):
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111, projection='3d')
 
-    # Fancy indexing: `verts[faces]` to generate a collection of triangles
+    
     mesh = Poly3DCollection(verts[faces], alpha=0.70)
     face_color = [0.45, 0.45, 0.75]
     mesh.set_facecolor(face_color)
